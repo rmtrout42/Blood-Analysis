@@ -43,6 +43,26 @@ def ldl_interface():
     print(ldl_category)
 
 
+def chol_analysis(chol_result):
+    if chol_result < 200:
+        return "Normal"
+    elif 200 <= chol_result < 239:
+        return "Borderline high"
+    else:
+        return "High"
+
+
+def chol_interface():
+    # Input should be HDL = 66
+    print("Cholesterol Interface\n")
+    print("Please input the result in the following format:")
+    print(" Chol=###, where ### is the numeric result.")
+    chol_input = input("Result: ")
+    chol_result = chol_input.split('=')
+    chol_category = chol_analysis(int(chol_result[1]))
+    print(chol_category)
+
+
 def interface():
     print("\nMy Blood Analysis Calculator\n")
     keep_running = True
@@ -50,12 +70,15 @@ def interface():
         print("\nOptions:")
         print("1-HDL Analysis")
         print("2-LDL Analysis")
+        print("3-Cholesterol Analysis")
         print("9-Quit")
         choice = input("\nChoose an option: ")
         if choice == '1':
             hdl_interface()
         if choice == '2':
             ldl_interface()
+        if choice == '3':
+            chol_interface()
         if choice == '9':
             print("\n")
             keep_running = False
