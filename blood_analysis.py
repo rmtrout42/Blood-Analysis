@@ -1,6 +1,13 @@
 # blood_analysis.py
 
 
+def verify_hdl_entry(entry):
+    if entry.startswith('HDL'):
+        return True
+    else:
+        return False
+
+
 def hdl_analysis(hdl_result):
     if hdl_result >= 60:
         return "Good"
@@ -16,9 +23,12 @@ def hdl_interface():
     print("Please input the result in the following format:")
     print(" HDL=##, where ## is the numeric result.")
     hdl_input = input("Result: ")
-    hdl_result = hdl_input.split('=')
-    hdl_category = hdl_analysis(int(hdl_result[1]))
-    print(hdl_category)
+    if verify_hdl_entry(hdl_input):
+        hdl_result = hdl_input.split('=')
+        hdl_category = hdl_analysis(int(hdl_result[1]))
+        print(hdl_category)
+    else:
+        print("Invalid input format\n")
 
 
 def ldl_analysis(ldl_result):
