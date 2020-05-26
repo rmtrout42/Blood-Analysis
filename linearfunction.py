@@ -4,4 +4,9 @@ def linearfunction(p1, p2, x):
     return x*slope+yintercept
 
 
+def point_on_line(p1, p2, p3):
+    y = linearfunction(p1, p2, p3[0])
+    return y == p3[1]
+
+
 print(linearfunction((0, 0), (1, 1), 5))
